@@ -11,13 +11,14 @@ angular.module('comment', [])
              *          - call getAll function
              ******************************************/
             $scope.comments = [];
+            $scope.cart = [];
             $scope.getAll = function() {
                 return $http.get('/comments').success(function(data) {
                     angular.copy(data, $scope.comments);
                 });
             };
             $scope.getAll();
-            
+
             /******************************************
              *       add comment
              *          - POST new comment
@@ -32,7 +33,7 @@ angular.module('comment', [])
                 $scope.formPrice = '';
                 $scope.formURL = '';
             };
-            
+
             /******************************************
              *       increment upvotes
              *          - PUT comment by _id using upvote
@@ -44,7 +45,7 @@ angular.module('comment', [])
                         comment.upvotes += 1;
                     });
             };
-            
+
             /******************************************
              *       delete comment
              *          - DELETE comment by _id
@@ -56,6 +57,17 @@ angular.module('comment', [])
                         console.log("delete worked");
                     });
                 $scope.getAll();
+            };
+
+            $scope.purchase = function() {
+                console.log("in purchase");
+                angular.forEach($scope.comments, function(value, key) {
+                    console.log(value);
+                    if (value.selected) {
+                        $scope.incrementUpvotes(value);
+                        $scope.cart.push(value);
+                    }
+                });
             };
         }
     ]);

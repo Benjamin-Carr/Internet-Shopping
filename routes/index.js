@@ -14,6 +14,13 @@ router.get('/', function(req, res, next) {
 });
 
 /******************************************
+ *       GET shopping page
+ ******************************************/
+router.get('/shopping', function(req, res) {
+  res.sendFile('shopping.html', { root: 'public' });
+});
+
+/******************************************
  *       GET /comments
  *       return a list of comments 
  ******************************************/
