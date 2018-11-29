@@ -16,12 +16,19 @@
             </div>
 
             <form ng-submit="addComment()" style="margin-top30px;">
-                <input type="text" ng-model="formContent"></input>
-                <button type="submit">Add Comment</button>
+                Product Name:
+                <input type="text" ng-model="formName"></input>
+                <br>
+                Price:
+                <input type="text" ng-model="formPrice"></input>
+                <br>
+                Picture URL:
+                <input type="text" ng-model="formURL"></input>
+                <br>
+                <button type="submit">Add Product</button>
             </form>
             <div ng-repeat="comment in comments | orderBy: '-upvotes'">
                 <span class="glyphicon glyphicon-remove" ng-click="delete(comment)"></span>
-                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
                 {{comment.title}} - price: ${{comment.price}} - orders: {{comment.upvotes}}
                 <img ng-src={{comment.url}} alt="picture">
             </div>

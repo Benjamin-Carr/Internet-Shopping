@@ -23,13 +23,14 @@ angular.module('comment', [])
              *          - POST new comment
              ******************************************/
             $scope.addComment = function() {
-                var tempURL = "https://www.sprint.com/content/dam/sprint/commerce/devices/apple/iphone_x/space_gray/devicenb_650x900.png/jcr:content/renditions/cq5dam.thumbnail.290.370.png";
-                var newcomment = { title: $scope.formContent, price: 100, url: tempURL, upvotes: 0 };
+                var newcomment = { title: $scope.formName, price: $scope.formPrice, url: $scope.formURL, upvotes: 0 };
                 $http.post('/comments', newcomment).success(function(data) {
                     console.log("add comment worked");
                     $scope.comments.push(data);
                 });
-                $scope.formContent = '';
+                $scope.formName = '';
+                $scope.formPrice = '';
+                $scope.formURL = '';
             };
             
             /******************************************
