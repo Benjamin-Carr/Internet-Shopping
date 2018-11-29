@@ -7,8 +7,10 @@ var mongoose = require('mongoose');
  *      create schema 
  ****************************************************/
 var CommentSchema = new mongoose.Schema({
-    title: String,
-    upvotes: { type: Number, default: 0 },
+  title: String,
+  price: Number, 
+  url: String,
+  upvotes: { type: Number, default: 0 },
 });
 
 
