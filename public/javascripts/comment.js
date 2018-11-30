@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('comment', [])
+angular.module('internetShopping', [])
     .controller('MainCtrl', [
         '$scope',
         '$http',
