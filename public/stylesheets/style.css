@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+.product-title {
+  font-size: 2em;
+}

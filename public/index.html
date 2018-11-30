@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    
     <!-- My CSS -->
     <link rel="stylesheet" href="stylesheets/style.css">
 
@@ -23,7 +23,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
 
     <!-- FontAwesome -->
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    
 
     <!-- My JavaScript -->
     <script src="javascripts/comment.js"></script>
@@ -53,14 +54,17 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Add Product</button>
             </form>
-
+            <br>
+            
             <div class="page-header">
                 <h1>Current Products</h1>
             </div>
-            
+            <hr>
             <div ng-repeat="comment in comments | orderBy: '-upvotes'">
-                <span class="glyphicon glyphicon-remove" ng-click="delete(comment)"></span> {{comment.title}} - price: ${{comment.price}} - orders: {{comment.upvotes}}
-                <img ng-src={{comment.url}} alt="picture">
+                <span class="product-title"> {{comment.title}} </span><span class="fas fa-times" ng-click="delete(comment)"></span>
+                <br><img ng-src={{comment.url}} alt="picture">
+                <br><strong>Net Sales: ${{comment.price * comment.upvotes}}</strong> | Price: ${{comment.price}} | Orders: {{comment.upvotes}}
+                <hr>
             </div>
         </div>
     </div>
