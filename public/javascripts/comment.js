@@ -61,6 +61,7 @@ angular.module('internetShopping', [])
 
             $scope.purchase = function() {
                 console.log("in purchase");
+                $scope.cart = [];
                 angular.forEach($scope.comments, function(value, key) {
                     console.log(value);
                     if (value.selected) {
