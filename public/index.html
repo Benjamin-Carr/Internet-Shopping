@@ -60,7 +60,7 @@
                 <h1>Current Products</h1>
             </div>
             <hr>
-            <div ng-repeat="product in products | orderBy: '-upvotes'">
+            <div ng-repeat="product in products | orderBy: 'title'">
                 <span class="product-title"> {{product.title}} </span><span class="fas fa-times" ng-click="delete(product)"></span>
                 <br><img ng-src={{product.url}} alt="picture">
                 <br><strong>Net Sales: ${{product.price * product.upvotes}}</strong> | Price: ${{product.price}} | Orders: {{product.upvotes}}
