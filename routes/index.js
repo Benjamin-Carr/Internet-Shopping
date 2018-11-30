@@ -21,68 +21,68 @@ router.get('/shopping', function(req, res) {
 });
 
 /******************************************
- *       GET /comments
- *       return a list of comments 
+ *       GET /products
+ *       return a list of products 
  ******************************************/
-router.get('/comments', function(req, res, next) {
-    Comment.find(function(err, comments) {
+router.get('/products', function(req, res, next) {
+    Comment.find(function(err, products) {
         if (err) { return next(err); }
-        res.json(comments);
+        res.json(products);
     });
 });
 
 /******************************************
- *       POST /comments
- *       create a new comment 
+ *       POST /products
+ *       create a new product 
  ******************************************/
-router.post('/comments', function(req, res, next) {
-    var comment = new Comment(req.body);
-    comment.save(function(err, comment) {
+router.post('/products', function(req, res, next) {
+    var product = new Comment(req.body);
+    product.save(function(err, product) {
         if (err) { return next(err); }
-        res.json(comment);
+        res.json(product);
     });
 });
 
 /******************************************
- *       GET /comments/:comment
- *       return a comment 
+ *       GET /products/:product
+ *       return a product 
  ******************************************/
-router.get('/comments/:comment', function(req, res) {
-    res.json(req.comment);
+router.get('/products/:product', function(req, res) {
+    res.json(req.product);
 });
 
 module.exports = router;
 
 /******************************************
- *       PUT /comments/:comment/upvote
- *       upvote a comment
+ *       PUT /products/:product/upvote
+ *       upvote a product
  ******************************************/
-router.put('/comments/:comment/upvote', function(req, res, next) {
-    req.comment.upvote(function(err, comment) {
+router.put('/products/:product/upvote', function(req, res, next) {
+    req.product.upvote(function(err, product) {
         if (err) { return next(err); }
-        res.json(comment);
+        res.json(product);
     });
 });
 
 /******************************************
- *       DELETE /comments/:comment/
- *       delete a comment
+ *       DELETE /products/:product/
+ *       delete a product
  ******************************************/
-router.delete('/comments/:comment', function(req, res) {
+router.delete('/products/:product', function(req, res) {
   console.log("in Delete");
-  req.comment.remove();
+  req.product.remove();
   res.sendStatus(200);
 });
 
 /******************************************
  *       param
- *       preload a comment object by _id
+ *       preload a product object by _id
  ******************************************/
-router.param('comment', function(req, res, next, id) {
-    Comment.findById(id, function(err, comment) {
+router.param('product', function(req, res, next, id) {
+    Comment.findById(id, function(err, product) {
         if (err) { return next(err); }
-        if (!comment) { return next(new Error("can't find comment")); }
-        req.comment = comment;
+        if (!product) { return next(new Error("can't find product")); }
+        req.product = product;
         return next();
     });
 });

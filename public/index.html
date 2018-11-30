@@ -27,7 +27,7 @@
     
 
     <!-- My JavaScript -->
-    <script src="javascripts/comment.js"></script>
+    <script src="javascripts/shopping.js"></script>
 
 </head>
 
@@ -60,10 +60,10 @@
                 <h1>Current Products</h1>
             </div>
             <hr>
-            <div ng-repeat="comment in comments | orderBy: '-upvotes'">
-                <span class="product-title"> {{comment.title}} </span><span class="fas fa-times" ng-click="delete(comment)"></span>
-                <br><img ng-src={{comment.url}} alt="picture">
-                <br><strong>Net Sales: ${{comment.price * comment.upvotes}}</strong> | Price: ${{comment.price}} | Orders: {{comment.upvotes}}
+            <div ng-repeat="product in products | orderBy: '-upvotes'">
+                <span class="product-title"> {{product.title}} </span><span class="fas fa-times" ng-click="delete(product)"></span>
+                <br><img ng-src={{product.url}} alt="picture">
+                <br><strong>Net Sales: ${{product.price * product.upvotes}}</strong> | Price: ${{product.price}} | Orders: {{product.upvotes}}
                 <hr>
             </div>
         </div>
